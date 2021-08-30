@@ -43,43 +43,31 @@
         </nav>
 
         <!-- Content Start -->
-        <div calss = "container">
-            <form style="max-width:500px; margin:auto;">
-                <h1 class="text-center display-5 fw-bold mb-4 mt-5">PROJECT BDGG</h1>
-                
-                <div class="row g-2 mt-5">
-                    <div class="col-md">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="아이디">
-                        <label for="floatingInputGrid">아이디</label>
-                      </div>
-                    </div>
-                    <div class="col-md">
-                      <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                          <option selected>유저</option>
-                          <option value="1">관리자</option>
-                        </select>
-                        <label for="floatingSelectGrid">권한 선택</label>
-                      </div>
-                    </div>
+        <div class="container">
+            <form style="max-width:480px;margin:auto" method="POST">
+                <h1 class="display-5 text-center fw-bold mb-4 mt-5">회원가입</h1>
+
+                <div class="form-floating mb-2 mt-5">
+                    <input type="email" class="form-control" id="em" name="email" placeholder="이메일" maxlength="128" required>
+                    <label for="em">이메일</label>
                 </div>
 
-                <div class="form-floating mt-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">이메일주소</label>
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="pw" name="password" placeholder="비밀번호" minlength="8" required>
+                    <label for="pw">비밀번호</label>
                 </div>
 
-                <div class="form-floating mt-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">비밀번호</label>
+                <div class="form-floating">
+                    <select class="form-select" id="scopeSelect" name="scope">
+                        <option selected value="user">유저</option>
+                        <option value="admin">관리자</option>
+                    </select>
+                    <label for="scopeSelect">권한 선택</label>
                 </div>
 
-                <div class="mt-5 d-grid">
-                    <button class="btn btn-lg btn-outline-primary btn-block">회원가입</button>
+                <div class="mt-4 d-grid">
+                    <button class="btn btn-lg btn-outline-primary btn-block" type="submit">다음</button>
                 </div>
-
-
             </form>
         </div>
 

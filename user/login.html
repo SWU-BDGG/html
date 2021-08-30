@@ -43,25 +43,24 @@
         </nav>
 
         <!-- Content Start -->
-        <div calss = "container">
-            <form style="max-width:480px;margin:auto;">
-                <h1 class="display-5 text-center fw-bold mb-4 mt-5">PROJECT BDGG</h1>
+        <div class="container">
+            <form style="max-width:480px;margin:auto" method="POST">
+                <h1 class="display-5 text-center fw-bold mb-4 mt-5">로그인</h1>
+
                 <div class="form-floating mb-2 mt-5">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
-                    <label for="floatingInput">이메일주소</label>
+                    <input type="email" class="form-control" id="em" name="email" placeholder="이메일" maxlength="128" required>
+                    <label for="em">이메일</label>
                 </div>
+
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required autofocus>
-                    <label for="floatingPassword">비밀번호</label>
+                    <input type="password" class="form-control" id="pw" name="password" placeholder="비밀번호" minlength="8" required>
+                    <label for="pw">비밀번호</label>
                 </div>
+
                 <div class="mt-4 d-grid">
-                    <button class="btn btn-lg btn-outline-primary btn-block">로그인</button>
+                    <button class="btn btn-lg btn-outline-primary btn-block" type="submit">다음</button>
                 </div>
-                <p class="mt-1 text-end">
-                    <a herf="#" class="text-secondary">비밀번호 찾기</a> | <a href="#" class="text-secondary">회원가입</a>
-                </p>
             </form>
-            
         </div>
 
         <!-- Content End -->
