@@ -23,7 +23,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">{{ g.name }}</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url_for('user.dashboard.index') }}">계정 관리</a></li>
-                                <li><a class="dropdown-item" href="#">파일 관리</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('user.dashboard.file') }}">파일 관리</a></li>
                                 <li><hr class="dropdown-divider"></li>
                             {% if g.is_admin %}
                                 <li><a class="dropdown-item" href="{{ url_for('admin.user_list') }}">부대찌개 관리자</a></li>

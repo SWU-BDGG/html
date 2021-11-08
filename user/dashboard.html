@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-4 mt-5">계정 관리</h1>
+        <div>
+            <a class="btn btn-outline-dark btn-lg">비밀번호 변경</a>
+            <a class="btn btn-outline-dark btn-lg" href="{{ url_for('session.remove_all') }}">모든 세션 로그아웃</a>
+        </div>
+
+        <h3 class="fw-bold mb-4 mt-5">로그인중인 세션</h3>
+        <table class="table table-hover mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">로그인 시간</th>
+                    <th scope="col">운영 체제</th>
+                    <th scope="col">정보</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for this in logins %}
+                {% if not this.expired|is_expired %}
+                <tr>
+                    <th class="bdgg-session-remove" scope="row" data-bdgg-session-id="{{ this.id }}">{{ this.date }}</th>
+                    <td>{{ this.user_agent|user_agent_os }}</td>
+                    <td>{{ this.user_agent|user_agent_browser }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <p>* 최대 <b>15</b>개의 세션만 조회됩니다.</p>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        document.querySelectorAll(".bdgg-session-remove").forEach(function(element){
+            element.addEventListener('click',function(e){
+                let id = e.target.dataset.bdggSessionId;
+                if(window.confirm("해당 세션을 만료시키겠습니까?")){location.href=`/session/remove/${id}`;}
+            });
+        });
+    </script>
+{% endblock %}
