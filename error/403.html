@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <form style="max-width:480px;margin:auto;" method="post">
+            <h1 class="display-1 text-center fw-bold mb-4 mt-5">403</h1>
+            <h5 class="text-center">권한이 부족합니다</h5>
+
+            <div class="row gap-1 pt-5">
+                <a class="col btn btn-outline-primary" href="/">메인화면으로 이동</a>
+                <a class="col btn btn-outline-danger" href="javascript:history.back();">뒤로 돌아가기</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

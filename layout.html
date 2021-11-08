@@ -10,6 +10,7 @@
     </head>
     <body>
         <!-- Navbar -->
+    {% if g.is_login %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="/">BDGG</a>
@@ -43,6 +44,7 @@
                 </div>
             </div>
         </nav>
+    {% endif %}
 
         {% block content %}{% endblock %}
 
