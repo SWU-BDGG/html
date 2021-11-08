@@ -50,8 +50,8 @@
                 <tbody>
                 {% for this in logins %}
                     {% if not this.expired|is_expired %}
-                    <tr class="bdgg-session-remove" data-bdgg-session-id="{{ this.id }}">
-                        <th scope="row">{{ this.date }}</th>
+                    <tr>
+                        <th class="bdgg-session-remove" scope="row" data-bdgg-session-id="{{ this.id }}">{{ this.date }}</th>
                         <td>{{ this.user_agent|user_agent_os }}</td>
                         <td>{{ this.user_agent|user_agent_browser }}</td>
                     </tr>
