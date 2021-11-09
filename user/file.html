@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-4 mt-5">내 파일</h1>
+        <div class="list-group list-group-flush">
+        {% for file in files.items %}
+            <a class="list-group-item list-group-item-action" href="{{ url_for('file.detail', file_id=file.uuid) }}">
+                <b>{{ file.date }}</b> {{ file.name }}
+            </a>
+        {% endfor %}
+        </div>
+
+        <nav class="py-3 d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item {% if files.prev_num is none %} disabled{% endif %}"><a class="page-link" href="{{ url_for('user.dashboard.file', page=files.prev_num) }}">&laquo; Previous</a></li>
+            {% for page in pages %}
+                <li class="page-item {% if page == files.page %} disabled{% endif %}"><a class="page-link" href="{{ url_for('user.dashboard.file', page=page) }}">{{ page }}</a></li>
+            {% endfor %}
+                <li class="page-item {% if files.next_num is none %} disabled{% endif %}"><a class="page-link" href="{{ url_for('user.dashboard.file', page=files.next_num) }}">Next &raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

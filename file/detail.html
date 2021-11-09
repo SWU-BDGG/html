@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-4 mt-5">파일 조회 결과</h1>
+
+        <h3 class="fw-bold mb-4 mt-5">파일 정보</h3>
+        <table class="table mt-3">
+            <tr>
+                <th scope="row">업로드 날짜</th>
+                <td>{{ file.date }}</td>
+            </tr>
+            <tr>
+                <th scope="row">파일 이름</th>
+                <td>{{ file.name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">체크섬</th>
+                <td><a href="{{ url_for('file.checksum', file_id=file.uuid) }}" target="_blank">checksum.txt</a></td>
+            </tr>
+            <tr>
+                <th scope="row">*MD5</th>
+                <td>{{ file.md5[:16] }}</td>
+            </tr>
+            <tr>
+                <th scope="row">*SHA256</th>
+                <td>{{ file.sha256[:16] }}</td>
+            </tr>
+        </table>
+        <p>* <b>MD5 SHA256</b>값은 웹에서 <b>16자</b>까지 확인 가능합니다. 자세한 정보는 체크섬 파일을 확인해주세요.</p>
+
+        <h3 class="fw-bold mb-4 mt-5">업로드 유저</h3>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">권한</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{ upload_user.id }}</th>
+                {% if g.is_admin %}
+                    <td><a href="{{ url_for('admin.user_edit', user_id=upload_user.id) }}">{{ upload_user.email }}</a></td>
+                {% else %}
+                    <td>{{ upload_user.email }}</td>
+                {% endif %}
+                    <td>{{ upload_user.is_admin|permission }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
