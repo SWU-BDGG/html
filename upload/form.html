@@ -6,7 +6,7 @@
             <p class="lead">업로드된 파일은 암호화후 접근이 가능합니다.</p>
         </div>
 
-        <form method="post" action="{{ url_for('upload.upload') }}">
+        <form method="post" action="{{ url_for('upload.upload') }}" enctype="multipart/form-data">
             <div>
                 <input type="file" class="form-control" name="upload" required="required">
             </div>
