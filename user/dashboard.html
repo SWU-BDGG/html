@@ -20,7 +20,11 @@
             {% for this in logins %}
                 {% if not this.expired|is_expired %}
                 <tr>
-                    <th class="bdgg-session-remove" scope="row" data-bdgg-session-id="{{ this.id }}">{{ this.date }}</th>
+                {% if this.token == session['user']['token'] %}
+                    <th scope="row">{{ this.date }}</th>
+                {% else %}
+                    <th class="bdgg-session-remove btn-link" scope="row" data-bdgg-session-id="{{ this.id }}">{{ this.date }}</th>
+                {% endif %}
                     <td>{{ this.user_agent|user_agent_os }}</td>
                     <td>{{ this.user_agent|user_agent_browser }}</td>
                 </tr>
