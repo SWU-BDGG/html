@@ -1,14 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
     <div class="container">
-        <div class="py-5 mb-3">
-            <h1 class="display-5 fw-bold">파일 업로드 페이지.</h1>
-            <p class="col-md-8 fs-4"></p>
+        <div class="pt-5 pb-3">
+            <h1 class="display-5 fw-bold">파일 업로드</h1>
+            <p class="lead">업로드된 파일은 암호화후 접근이 가능합니다.</p>
         </div>
 
-        <div class="input-group">
-            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
-        </div>
+        <form method="post" action="{{ url_for('upload.upload') }}">
+            <div>
+                <input type="file" class="form-control" name="upload" required="required">
+            </div>
+
+            <div class="mt-4 d-grid">
+                <button class="btn btn-lg btn-outline-dark" type="submit">업로드</button>
+            </div>
+        </form>
     </div>
 {% endblock %}
