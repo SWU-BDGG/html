@@ -3,8 +3,8 @@
     <div class="container">
         <h1 class="display-5 fw-bold mb-4 mt-5">파일 조회 결과</h1>
     {% if key_status %}
-        <div class="d-grid gap-2 py-2">
-            <a class="btn btn-outline-dark btn-lg" href="">파일 다운로드</a>
+        <div id="bdgg-download-display" class="d-grid gap-2 py-2" style="display:none !important;">
+            <a id="bdgg-download-button" class="btn btn-outline-dark btn-lg" href="" target="_blank">파일 다운로드</a>
         </div>
     {% endif %}
         <h3 class="fw-bold mb-4 mt-5">파일 정보</h3>
@@ -54,4 +54,17 @@
             </tbody>
         </table>
     </div>
+{% endblock %}
+{% block script %}
+    <script>
+        function get_download_url(){
+            let url = "swubdgg://fileDownload";
+            url += "?uuid={{ file.uuid }}";
+            url += "&token={{ session['user']['token'] }}";
+            url += `&host=${location.host}`;
+            url += `&protocol=${location.protocol.split("").slice(0, -1).join("")}`;
+            document.getElementById("bdgg-download-display").style = "";
+            document.getElementById("bdgg-download-button").href = url;
+        } get_download_url();
+    </script>
 {% endblock %}
