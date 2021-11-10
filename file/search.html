@@ -1,19 +1,28 @@
 {% extends 'layout.html' %}
 {% block content %}
     <div class="container">
-        <form method="get" class="mt-3">
+        <form method="get" class="mt-3" onsubmit="return ask();">
             <div class="input-group input-group-lg mb-3">
                 <input type="text" class="form-control" id="filename" name="filename" placeholder="파일 이름" value="{{ query }}" required>
-                <button class="btn btn-outline-secondary px-5" type="submit">검색</button>
+                <button class="btn btn-outline-dark px-5" type="submit">검색</button>
             </div>
         </form>
 
     {% for file in files %}
-        <div class="list-group">
-            <a href="#{{ file.uuid }}" class="list-group-item list-group-item-action">
-                <span class="badge bg-secondary">{{ file.date }}</span> {{ file.name }}
+        <div class="list-group list-group-flush">
+            <a href="{{ url_for('file.detail', file_id=file.uuid) }}" class="list-group-item list-group-item-action" style="padding-left:0;">
+                <b>{{ file.date }}</b> {{ file.name }}
             </a>
         </div>
     {% endfor %}
     </div>
+{% endblock %}
+{% block script %}
+    <script>
+        function ask(){
+            if(document.getElementById("filename").value.length < 2){
+                alert("검색할 파일명이 너무 짧습니다."); return false;
+            } return true;
+        }
+    </script>
 {% endblock %}
