@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <form style="max-width:480px;margin:auto" method="POST">
+            <h1 class="display-5 text-center fw-bold mb-4 mt-5">비밀번호 변경</h1>
+            <p class="lead"><b>기존 비밀번호</b>를 입력해주세요.</p>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="pw" name="password" placeholder="비밀번호" minlength="8" required>
+                <label for="pw">비밀번호</label>
+            </div>
+
+            <div class="mt-4 d-grid">
+                <button class="btn btn-lg btn-outline-primary" type="submit">다음</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+    {% if request.args.get("e") == "pwn" %}
+        alert("비밀번호를 입력해주세요.")
+    {% elif request.args.get("e") == "pwi" %}
+        alert("비밀번호가 일치하지 않습니다.")
+    {% endif %}
+    </script>
+{% endblock %}

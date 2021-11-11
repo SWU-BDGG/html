@@ -3,7 +3,7 @@
     <div class="container">
         <h1 class="display-5 fw-bold mb-4 mt-5">계정 관리</h1>
         <div>
-            <a class="btn btn-outline-dark btn-lg">비밀번호 변경</a>
+            <a class="btn btn-outline-dark btn-lg" href="{{ url_for('user.password.step1') }}">비밀번호 변경</a>
             <a class="btn btn-outline-dark btn-lg" href="{{ url_for('session.remove_all') }}">모든 세션 로그아웃</a>
         </div>
 
