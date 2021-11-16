@@ -7,6 +7,11 @@
             <a id="bdgg-download-button" class="btn btn-outline-dark btn-lg" href="" target="_blank">파일 다운로드</a>
         </div>
     {% endif %}
+    {% if can_delete_able %}
+        <div class="d-grid gap-2 py-2">
+            <a class="btn btn-outline-danger btn-lg" href="{{ url_for('file.delete', file_id=file.uuid) }}">파일 삭제</a>
+        </div>
+    {% endif %}
         <h3 class="fw-bold mb-4 mt-5">파일 정보</h3>
         <table class="table mt-3">
             <tr>
